@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates
+    apt:
+      upgrade: dist
+      update_cache: yes
+
+  - name: copy test html file to site
+    copy:
+      src: default_site.html
+      dest: /var/www/html/index-test.html
+      owner: root
+      group: root
+      mode: 0644
+
